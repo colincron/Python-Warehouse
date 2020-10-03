@@ -55,7 +55,7 @@ def inventory_value():
 
 
 # direct instructions
-opc = ""
+opc = " "
 while(opc != 'x'):
     clear()
     print_menu()
