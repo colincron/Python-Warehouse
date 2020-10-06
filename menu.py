@@ -7,7 +7,9 @@ def print_menu():
     print("[1] Register New Item\n")
     print("[2] Display Catalog\n")
     print("[3] Display Out of Stock Items\n")
-    print("[4] Value of Inventory\n\n")
+    print("[4] Value of Inventory\n")
+    print("[5] Update Item Price\n\n")
+    print("[6] Delete an item")
     print("[x] Close")
 
 def clear():
@@ -20,6 +22,7 @@ def print_item(item):
     print("Category:        " + item.category)
     print("Number in stock: " + str(item.stock))
     print("Price per unit:  "+ str(item.price))
+    # STRING.ljust(#) / STRING.rjust(#)
 
 def print_header(text):
     clear()
