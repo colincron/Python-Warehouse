@@ -109,7 +109,7 @@ def remove_item():
     for item in catalog:
         if(item.id == int(item_id)):
             found = True
-            confirm = input("Are you sure? If so, type 'Yes'")
+            confirm = input("Are you sure? If so, type 'Yes': ")
             if(confirm == "Yes"):
                 catalog.remove(item)
                 print("Item deleted!")

@@ -8,8 +8,8 @@ def print_menu():
     print("[2] Display Catalog\n")
     print("[3] Display Out of Stock Items\n")
     print("[4] Value of Inventory\n")
-    print("[5] Update Item Price\n\n")
-    print("[6] Delete an item")
+    print("[5] Update Item Price\n")
+    print("[6] Delete an item\n\n")
     print("[x] Close")
 
 def clear():
@@ -17,11 +17,11 @@ def clear():
 
 def print_item(item):
     print("\n")
-    print("ID:              " + str(item.id))
-    print("Title:           " + item.title)
-    print("Category:        " + item.category)
-    print("Number in stock: " + str(item.stock))
-    print("Price per unit:  "+ str(item.price))
+    print("ID:".ljust(20) + str(item.id).rjust(10))
+    print("Title:".ljust(20) + item.title.rjust(10))
+    print("Category:".ljust(20) + item.category.rjust(10))
+    print("Number in stock:".ljust(20) + str(item.stock).rjust(10))
+    print("Price per unit:".ljust(20) + str(item.price).rjust(10))
     # STRING.ljust(#) / STRING.rjust(#)
 
 def print_header(text):
