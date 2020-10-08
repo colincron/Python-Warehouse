@@ -102,6 +102,23 @@ def update_price():
     if(not found):
         print("Error, invalid ID. Try again.")    
 
+def update_stock():
+    display_catalog()
+    item_id = input("Please enter the ID number of the product: ")
+    found = False # referred to as a flag
+    for item in catalog:
+        if(item.id == int(item_id)):
+            found = True
+            stock_change = input("How many would you like to add? Use negative numbers for reduction in stock: ")
+            item.stock = item.stock + int(stock_change)
+            if(item.stock < 0):
+                print("Unable to save changes. Stock can't be a negative number.")
+                item.stock = item.stock - int(stock_change)
+            else:
+                serialize_catalog()
+    if(not found):
+        print("Error, invalid ID. Try again.")  
+
 def remove_item():
     display_catalog()
     item_id = input("Please enter the ID number of the product: ")
@@ -119,9 +136,41 @@ def remove_item():
     if(not found):
         print("Error, invalid ID try again.")
 
+def display_categories():
+    clear()
+    print_header("Categories")
+    cat_list = []
+    i = 1
+    for item in catalog:
+        if item.category not in cat_list:
+            cat_list.append(item.category)
+            print("\n" + str(i) + ": " + item.category)
+            i = i + 1
+
+def lowest_cost_item():
+    clear()
+    print_header("Cheapest Item")
+    temp = []
+    for item in catalog:
+        temp.append(item.price)
+        temp = sorted(temp)
+    for item in catalog:
+        if(item.price == temp[0]):
+            print_item(item)
+
+
+
+def three_expensive_items():
+    clear()
+    print_header("Three Most Expensive Items")
+    temp = sorted(catalog, key=lambda item: item.price)
+    print_item(temp[-1])
+    print_item(temp[-2])
+    print_item(temp[-3])
+    
 
 # direct instructions
-
+clear()
 deserialize_catalog()
 input("Press Enter to continue...")
 
@@ -151,6 +200,18 @@ while(opc != 'x'):
     
     elif(opc == "6"):
         remove_item()
+
+    elif(opc == "7"):
+        update_stock()
+    
+    elif(opc == "8"):
+        display_categories()
+    
+    elif(opc == "9"):
+        lowest_cost_item()
+    
+    elif(opc == "10"):
+        three_expensive_items()
 
     elif(opc == "Knock Knock"):
         print("Who's there?")
